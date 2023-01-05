@@ -1,0 +1,17 @@
+{   
+    "products": [
+        {
+            "id"  : 128282,
+            "name" : "Leche",
+            "price"   : "25",
+            "descuento"  : 0.0
+        },
+         {
+            "id"  : 2787373,
+            "name" : "Zapatillas",
+            "price"   : "assets/icons/ico_home.svg",
+            "descuento"  : 10.0
+        }
+      
+    ]
+}
