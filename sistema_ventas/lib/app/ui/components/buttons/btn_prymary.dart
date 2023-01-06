@@ -1,8 +1,11 @@
-/*import 'package:app_gestion_camaroneras/core/theme/app_colors.dart';
-import 'package:app_gestion_camaroneras/core/theme/app_text_theme.dart';
-import 'package:app_gestion_camaroneras/core/utils/constant.dart';
+//import 'package:app_gestion_camaroneras/core/theme/app_colors.dart';
+//import 'package:app_gestion_camaroneras/core/theme/app_text_theme.dart';
+//import 'package:app_gestion_camaroneras/core/utils/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sistema_ventas/core/theme/app_colors.dart';
+import 'package:sistema_ventas/core/theme/app_text_theme.dart';
+import 'package:sistema_ventas/core/utils/constant.dart';
 
 class BtnPrimary extends StatelessWidget {
   const BtnPrimary({
@@ -27,7 +30,7 @@ class BtnPrimary extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(kRadiusMedium.r),
-        color: isOutline ? Colors.white : AppColors.kBase,
+        color: isOutline ? Colors.white : Color.fromARGB(255, 228, 48, 36),
         border: isOutline
             ? Border.all(
                 color: AppColors.kBase,
@@ -70,4 +73,4 @@ class BtnPrimary extends StatelessWidget {
       ),
     );
   }
-}*/
+}

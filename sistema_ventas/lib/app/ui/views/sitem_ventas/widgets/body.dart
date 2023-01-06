@@ -62,7 +62,7 @@ class BodySistemVenta extends GetView<SistemaVentasController> {
                           () => DataTable(
                             columnSpacing: 250.0,
                             headingRowColor: MaterialStateProperty.resolveWith(
-                              (states) => Color.fromARGB(255, 159, 148, 161),
+                              (states) => Color.fromARGB(255, 173, 156, 175),
                             ),
                             columns: const [
                               DataColumn(label: Text("Cant.")),

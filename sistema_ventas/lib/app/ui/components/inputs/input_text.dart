@@ -1,7 +1,8 @@
-/*import 'package:app_gestion_camaroneras/core/theme/app_colors.dart';
+//import 'package:app_gestion_camaroneras/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sistema_ventas/core/theme/app_colors.dart';
 
 class InputText extends StatelessWidget {
   const InputText({
@@ -134,4 +135,4 @@ class InputText extends StatelessWidget {
       ],
     );
   }
-}*/
+}

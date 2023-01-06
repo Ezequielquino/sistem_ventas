@@ -1,15 +1,9 @@
 import 'dart:convert';
-
-//import 'package:dio/dio.dart';
-//import 'package:flutter/material.dart';
-//import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sistema_ventas/app/data/models/response/responde_sistem_ventas.dart';
-//import 'package:sistema_ventas/app/data/models/response/response_product_model.dart';
+import 'package:sistema_ventas/app/routes/routes_name.dart';
 
 class LoginVentasController extends GetxController {
-  set responseMenu(ResponseSistemVenta responseMenu) {}
-
   @override
   void onInit() {
     _initialize();
@@ -29,12 +23,34 @@ class LoginVentasController extends GetxController {
   }
 
   //Instance
-  //final _shrimpsFarmRepository = Get.find<ShrimpsFarmRepository>();
+  //final _authenticationRepository = Get.find<AuthenticationRepository>();
 
   //Variable
+  RxBool isLoading = RxBool(false);
+  RxBool isObscureText = RxBool(true);
+  RxString errorTextCompany = RxString("");
+  RxString errorTextEmail = RxString("");
+  RxString errorTextPassword = RxString("");
+  RxString existsSession = RxString("");
 
   //TextEditingController
+  TextEditingController textCtrlCompania = TextEditingController();
+  TextEditingController textCtrlEmail = TextEditingController();
+  TextEditingController textCtrlPassword = TextEditingController();
 
   //Function
-  void _initialize() async {}
+  void _initialize() async {
+    textCtrlCompania.text = "cid";
+    textCtrlEmail.text = "app_movil";
+    textCtrlPassword.text = "W8JcXHmObSwOCmeH";
+  }
+
+  void showPassword() {
+    isObscureText.value = !isObscureText.value;
+  }
+
+  void doAuthentication() async {
+    isLoading.value = false;
+    Get.offNamed(RoutesName.SISTEMAVENTAS);
+  }
 }
