@@ -9,32 +9,35 @@ class HeaderAppbar extends StatelessWidget {
     return Row(
       //mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Container(
-          height: 30.0,
-          width: 100.0,
-          decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(20.0)),
-          child: Row(
-            //mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: const [
-              SizedBox(width: 10.0),
-              Icon(
-                Icons.support_agent,
-                color: Colors.black,
-              ),
-              SizedBox(width: 10.0),
-              Text(
-                "Ayuda",
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-              ),
-            ],
+        Padding(
+          padding: EdgeInsets.only(right: 1010.0),
+          child: Container(
+            height: 30.0,
+            width: 100.0,
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(20.0)),
+            child: Row(
+              //mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: const [
+                SizedBox(width: 10.0),
+                Icon(
+                  Icons.support_agent,
+                  color: Colors.black,
+                ),
+                SizedBox(width: 10.0),
+                Text(
+                  "Ayuda",
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
           ),
         ),
-        SizedBox(width: 590.0),
+        //SizedBox(width: 590.0),
         Row(
           children: [
-            CircleAvatar(
+            const CircleAvatar(
               backgroundImage: AssetImage("assets/gustavo.jpg"),
             ),
             SizedBox(width: 5.w),

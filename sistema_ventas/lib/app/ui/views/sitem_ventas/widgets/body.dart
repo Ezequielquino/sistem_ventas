@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:sistema_ventas/app/ui/views/sitem_ventas/sistema_ventas_controller.dart';
+import 'package:sistema_ventas/app/ui/views/sitem_ventas/widgets/purchase_detail.dart';
 
-class BodySistemVenta extends StatelessWidget {
+class BodySistemVenta extends GetView<SistemaVentasController> {
   const BodySistemVenta({super.key});
 
   @override
@@ -10,61 +14,96 @@ class BodySistemVenta extends StatelessWidget {
       height: double.infinity,
       width: double.infinity,
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            flex: 0,
+            flex: 3,
             child: Container(
               color: Colors.white,
-              padding: EdgeInsets.only(top: 10.0, bottom: 380.0, left: 5.0),
+              padding: const EdgeInsets.only(
+                top: 20.0,
+                left: 20.0,
+                right: 20.0,
+              ),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          width: 600.0,
-                          child: const TextField(
-                            decoration: InputDecoration(
-                              hintText: "Type Article Title",
-                              prefixIcon: Icon(Icons.search),
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.black26,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+                    TextButton(
+                      onPressed: controller.searchProduct,
+                      child: const Text("Agregar"),
                     ),
                     SizedBox(height: 10.0),
+                    TextField(
+                      cursorColor: Colors.black,
+                      controller: controller.txtCtrlProduct,
+                      decoration: const InputDecoration(
+                        hintStyle: TextStyle(
+                            color: Colors.black45, fontWeight: FontWeight.bold),
+                        hintText: "Search Products",
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: Colors.black,
+                        ),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black26,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10.0),
                     //Now let's add the Table
                     Column(
                       // crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        DataTable(
+                        Obx(
+                          () => DataTable(
+                            columnSpacing: 250.0,
                             headingRowColor: MaterialStateProperty.resolveWith(
-                                (states) => Color.fromARGB(255, 159, 148, 161)),
+                              (states) => Color.fromARGB(255, 159, 148, 161),
+                            ),
                             columns: const [
                               DataColumn(label: Text("Cant.")),
                               DataColumn(label: Text("Producto")),
                               DataColumn(label: Text("Precio")),
                               DataColumn(label: Text("Dscto.")),
                             ],
-                            rows: const [
-                              DataRow(cells: [
-                                DataCell(Text("0")),
-                                DataCell(
-                                    Text("How to build a Flutter Web App")),
-                                //DataCell(Text("${DateTime.now()}")),
-                                DataCell(Text("2.3K Views")),
-                                DataCell(Text("102Comments")),
-                              ]),
-                            ]),
-                        //Now let's set the pagination,
+                            rows: List.generate(
+                              controller.carItems.length,
+                              (index) => DataRow(
+                                cells: [
+                                  const DataCell(
+                                    Text("1"),
+                                    //Text("${controller.carItems[index].id}"),
+                                  ),
+                                  DataCell(
+                                    Text(
+                                      "${controller.carItems[index].name}",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  DataCell(
+                                    Text(
+                                      "${controller.carItems[index].price}",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  DataCell(
+                                    Text(
+                                      "${controller.carItems[index].descuento}",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
                         SizedBox(width: 10.0),
                       ],
                     ),
@@ -73,78 +112,7 @@ class BodySistemVenta extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 20.0),
-          Container(
-            color: Color.fromARGB(255, 238, 227, 227),
-            height: 555.0,
-            width: 300.0,
-            child: Column(children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Column(
-                    children: [
-                      SizedBox(height: 10.0),
-                      Container(
-                        height: 150.0,
-                        width: 120.0,
-                        decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 213, 219, 224),
-                            borderRadius: BorderRadius.circular(20.0)),
-                        child: Center(
-                          child: Image.asset("assets/comprobante.png"),
-                        ),
-                      ),
-                      SizedBox(height: 10.0),
-                      const Text(
-                        "Comprobante",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      SizedBox(height: 10.0),
-                      Container(
-                        height: 150.0,
-                        width: 120.0,
-                        decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 213, 219, 224),
-                            borderRadius: BorderRadius.circular(20.0)),
-                        child: Center(
-                          child: Image.asset("assets/cliente.png"),
-                        ),
-                      ),
-                      SizedBox(height: 10.0),
-                      const Text(
-                        "Cliente",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 289.0),
-                child: Container(
-                  height: 80.0,
-                  width: double.infinity,
-                  color: Colors.red,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: const [
-                      SizedBox(height: 10.0),
-                      Text(
-                        "Total a pagar",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      Spacer()
-                    ],
-                  ),
-                ),
-              )
-            ]),
-          ),
+          PurchaseDetail()
         ],
       ),
     );
